@@ -1,0 +1,72 @@
+.card {
+  cursor: move;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  aspect-ratio: var(--card-ratio);
+  position: relative;
+  background-size: contain;
+  content-visibility: auto;
+  transition: 0.1s;
+  &:hover {
+    filter: brightness(0.9);
+  }
+  .cardname {
+    font-size: 12px;
+    position: absolute;
+    padding: 5px;
+    top: 0;
+    bottom: 0;
+    max-height: 100%;
+    margin: auto;
+    left: 0;
+    height: fit-content;
+    width: 100%;
+    text-align: center;
+    line-height: 1.75em;
+    overflow: hidden; //超出的文本隐藏
+    text-overflow: ellipsis; //溢出用省略号显示
+  }
+  .cardcover {
+    position: relative;
+  }
+  .cardlimit {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+  }
+}
+.nativeCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid #aa803e;
+  background: linear-gradient(145deg, #68502a, #352612);
+  box-shadow: inset 0 0 0 1px #e5bb6429;
+  strong {
+    font: 600 clamp(7px, 0.65vw, 11px) / 1.25 var(--theme-font);
+    color: #ffebbb;
+    min-height: 2.4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  small {
+    font-size: clamp(5px, 0.46vw, 8px);
+    color: #e3cda1;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+}
+.art {
+  flex: 1;
+  min-height: 0;
+  background-size: 132% auto;
+  background-position: center 32%;
+  background-repeat: no-repeat;
+  background-color: #241a0e;
+  border: 1px solid #c89c5144;
+}

@@ -1,0 +1,28 @@
+.special-btn {
+  cursor: pointer;
+  width: 12.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid #244737;
+  border-radius: 3px;
+  background: var(--sand-teal);
+  color: #fff4dd;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px #315b4d25;
+  transition: 0.2s;
+  &:not(.disabled):hover {
+    background: #244737;
+    transform: translateY(-1px);
+  }
+  &.disabled {
+    background: #d9cdb6;
+    color: #827564;
+    border-color: #b5a68d;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}

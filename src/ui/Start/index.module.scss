@@ -1,0 +1,144 @@
+.home {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 3rem 2.5rem 3rem;
+  overflow: auto;
+}
+.logo {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  filter: drop-shadow(0 4px 6px #000);
+  h1 {
+    font: 900 clamp(3.5rem, 6vw, 6.5rem) / 1 var(--display-font);
+    letter-spacing: -0.08em;
+    color: #d9a645;
+    -webkit-text-stroke: 1px #4d2a0a;
+    text-shadow:
+      1px 1px #ffe5a3,
+      3px 3px #291a0c,
+      -2px -2px #c38f32,
+      0 0 22px #060400;
+    white-space: nowrap;
+  }
+  p {
+    font: 500 1.5rem var(--display-font);
+    letter-spacing: 0.25em;
+    margin-top: 0.7rem;
+    color: #f3d692;
+    text-shadow: 0 2px 3px #000;
+  }
+  > span {
+    display: block;
+    font-size: 0.55rem;
+    letter-spacing: 0.5em;
+    color: #e0be80;
+    margin-top: 0.7rem;
+  }
+}
+.crown {
+  font-size: 2.5rem;
+  line-height: 0.8;
+  color: #dcb66b;
+  margin-bottom: 0.5rem;
+}
+.quote {
+  position: absolute;
+  right: 3.3rem;
+  top: 37%;
+  font: italic 1.1rem/1.6 var(--display-font);
+  color: #e5c287;
+  text-align: center;
+  text-shadow: 0 2px 7px #000;
+  background: radial-gradient(#0f0a0560, transparent);
+  padding: 1rem;
+}
+.actions {
+  width: min(100%, 55rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin-top: 21rem;
+  button {
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    color: #dcb46b;
+    cursor: pointer;
+    transition:
+      transform 0.2s,
+      filter 0.2s;
+    padding: 1.5rem 1rem;
+    > span:first-child {
+      font-size: 2.5rem;
+    }
+    svg {
+      width: 2.7rem;
+      height: 2.7rem;
+    }
+    strong {
+      font: 500 1.2rem var(--display-font);
+      letter-spacing: 0.035em;
+    }
+    small {
+      font-size: 0.57rem;
+      letter-spacing: 0.04em;
+      color: #af9362;
+    }
+    &:hover {
+      transform: translateY(-5px);
+      filter: brightness(1.2);
+    }
+    &:focus-visible {
+      outline: 2px solid #f3ce85;
+      outline-offset: 4px;
+    }
+  }
+}
+.motto {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font: 500 0.72rem var(--display-font);
+  letter-spacing: 0.09em;
+  color: #dfba74;
+  text-shadow: 0 2px 3px #000;
+  margin: 1.5rem 0;
+  span {
+    width: 3rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #b48a45, transparent);
+  }
+}
+.home footer {
+  font-size: 0.48rem;
+  letter-spacing: 0.18em;
+  color: #b59a6c;
+  text-shadow: 0 1px 3px #000;
+  span {
+    margin: 0 0.7rem;
+  }
+}
+@media (max-height: 700px) {
+  .home {
+    padding-bottom: 1.5rem;
+  }
+  .logo {
+    top: 10%;
+  }
+  .actions {
+    margin-top: 18rem;
+  }
+  .quote {
+    top: 35%;
+  }
+}

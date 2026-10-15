@@ -1,0 +1,35 @@
+import { theme as antdTheme, type ThemeConfig } from "antd";
+export const theme: ThemeConfig = {
+  algorithm: antdTheme.darkAlgorithm,
+  token: {
+    colorPrimary: "#d4a34e",
+    colorInfo: "#d4a34e",
+    colorSuccess: "#8aa86a",
+    colorWarning: "#d4a34e",
+    colorError: "#cb7959",
+    colorText: "#e1caa3",
+    colorTextSecondary: "#a18b64",
+    colorBgBase: "#15120d",
+    colorBgContainer: "#211b12",
+    colorBgElevated: "#20190f",
+    colorBorder: "#77592b",
+    colorBorderSecondary: "#56401f",
+    fontFamily: '"Segoe UI", "Trebuchet MS", sans-serif',
+    borderRadius: 3,
+    controlOutline: "#c3953c44",
+    boxShadow: "0 16px 50px #0009",
+  },
+  components: {
+    Modal: { paddingMD: 24, paddingContentHorizontalLG: 28 },
+    Button: {
+      fontSize: 12,
+      fontSizeLG: 14,
+      defaultShadow: "none",
+      primaryShadow: "0 3px 12px #d29c2c20",
+      primaryColor: "#2b1c08",
+    },
+    Select: { controlItemBgActive: "#674c23", fontSizeLG: 14 },
+    Layout: { colorBgBody: "transparent" },
+    Tooltip: { colorBgSpotlight: "#20180d", colorTextLightSolid: "#f3dba8" },
+  },
+};

@@ -1,0 +1,112 @@
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.45rem 0.9rem;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid #80602b55;
+  h2 {
+    font: 500 0.95rem var(--display-font);
+    color: #dac08d;
+  }
+  button {
+    font-size: 0.6rem;
+    padding: 0 0.5rem;
+    color: #d5ae64;
+    border: 1px solid #7b5a29;
+    background: #372913;
+  }
+}
+.deck-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  .item {
+    min-height: 4.1rem;
+    padding: 0.45rem 0.55rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.2s;
+    &:hover {
+      background: #91682316;
+      border-color: #a57a3629;
+    }
+    .hover,
+    .selected {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: 2px;
+    }
+    .selected {
+      background: linear-gradient(90deg, #aa79262e, transparent);
+      border-left: 2px solid #d0a45b;
+    }
+    .thumbnail {
+      width: 2.35rem;
+      height: 3.35rem;
+      object-fit: cover;
+      border: 1px solid #8b743f;
+      flex-shrink: 0;
+    }
+    .deckName {
+      min-width: 0;
+      flex: 1;
+      strong {
+        font-size: 0.7rem;
+        color: #d7c098;
+        font-weight: 500;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      small {
+        font-size: 0.55rem;
+        color: #8e7955;
+        display: block;
+        margin-top: 0.35rem;
+      }
+    }
+    .btns {
+      display: flex;
+      position: absolute;
+      right: 0.3rem;
+      bottom: 0.15rem;
+      gap: 0;
+      opacity: 0;
+      background: #161208ed;
+      transition: 0.2s;
+      button {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 0.7rem;
+        padding: 0.1rem;
+      }
+    }
+    &:hover .btns,
+    &:focus-within .btns {
+      opacity: 1;
+    }
+  }
+}
+.btn-add {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  width: calc(100% - 2rem);
+  border: 1px solid #8c6b35;
+  color: #d4b074;
+  background: linear-gradient(#392b16, #1b160d);
+  font-size: 0.68rem !important;
+  &:hover {
+    border-color: #d5ab61 !important;
+    color: #f0d097 !important;
+  }
+}

@@ -1,0 +1,179 @@
+@charset "utf-8";
+
+/* 默认字体大小，适用于PC端 */
+html {
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  --neos-adaptive-scale: 1;
+  --neos-adaptive-width: 100vw;
+  --neos-adaptive-height: 100vh;
+}
+
+/* 在移动端上设置不同的字体大小 */
+/* iPad */
+@media screen and (max-width: 1280px) {
+  html {
+    font-size: 14px;
+  }
+}
+/* Mobile */
+@media screen and (max-width: 1080px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+body {
+  color-scheme: dark;
+  color: var(--sand-ink);
+  background: #15100a;
+  display: block;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: var(--theme-font);
+  --theme-font: "Segoe UI", "Trebuchet MS", sans-serif;
+  --display-font: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --nato-serif-font: var(--display-font);
+  --header-height: 7rem;
+  --sand-ink: #e2cda6;
+  --sand-muted: #ab9570;
+  --sand-accent: #bd934b;
+  --sand-teal: #c69848;
+  --sand-border: #a17a354d;
+  --sand-surface: #18140feb;
+  --sidebar-width: 11.5rem;
+  #root {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: var(--neos-adaptive-width);
+    height: var(--neos-adaptive-height);
+    margin: 0;
+    transform: translate(-50%, -50%) scale(var(--neos-adaptive-scale));
+    transform-origin: center center;
+    will-change: transform;
+  }
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+  display: block; // 取消默认的4px下边距
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.duel-mat {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+
+.duel-mat-camera {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  perspective: var(--perspective);
+}
+
+.duel-mat-camera,
+.duel-mat-camera * {
+  transform-style: preserve-3d;
+}
+
+.duel-mat-plane {
+  transform: translateX(0) translateY(0) translateZ(0)
+    rotateX(var(--plane-rotate-x));
+  width: fit-content;
+}
+
+.duel-mat-card-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The game board is intentionally landscape on phones. */
+@media screen and (max-width: 700px) and (orientation: portrait) {
+  body::before {
+    content: "Vire o dispositivo para jogar na horizontal";
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    color: #e2cda6;
+    background: #15100a;
+    font: 600 1rem/1.5 var(--theme-font);
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  body {
+    --sidebar-width: 9rem;
+    --header-height: 5.4rem;
+  }
+
+  .sidebar {
+    padding: 0.65rem 0.45rem;
+  }
+
+  .profile {
+    gap: 0.45rem;
+    padding-bottom: 0.45rem;
+    strong { font-size: 0.82rem; }
+    small { font-size: 0.48rem; }
+  }
+
+  .avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    img { width: 1.7rem; height: 1.7rem; }
+  }
+
+  .divider { margin: 0.25rem 0 0.45rem; }
+
+  .link {
+    min-height: 2.25rem;
+    padding: 0.4rem 0.55rem;
+    gap: 0.55rem;
+    font-size: 0.68rem;
+  }
+
+  .sidebarBottom {
+    padding-top: 0.8rem;
+    img {
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-bottom: 0.35rem;
+    }
+  }
+
+  .header { padding: 0.7rem 1rem; }
+
+  .pageTitle {
+    gap: 0.5rem;
+    > span { font-size: 1.5rem; }
+    h1 { font-size: 1.35rem; }
+    p { font-size: 0.4rem; margin-top: 0.2rem; }
+  }
+}

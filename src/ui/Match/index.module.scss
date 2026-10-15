@@ -1,0 +1,287 @@
+.page {
+  position: absolute;
+  inset: var(--header-height) 2rem 2rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.tabs {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+  button {
+    padding: 0.8rem 1.8rem;
+    min-width: 10rem;
+    background: linear-gradient(#292115e8, #17130be8);
+    border: 1px solid #8d692b77;
+    color: #af966c;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 3px #0003;
+    transition: 0.2s;
+    &:hover {
+      color: #ffe3a0;
+      border-color: #c99a47;
+    }
+    &.active {
+      color: #f2d59b;
+      border-color: #d3a653;
+      box-shadow:
+        inset 0 -2px #b78a3e,
+        0 0 18px #cb922b20;
+    }
+  }
+}
+.panels {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.85fr) minmax(0, 1.7fr);
+  gap: 1.1rem;
+  min-height: 0;
+  flex: 1;
+}
+.challenge {
+  padding: 1.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    font: 500 1.6rem var(--display-font);
+    color: #e3c28a;
+    margin: 0.5rem 0;
+  }
+  > p {
+    font-size: 0.78rem;
+    line-height: 1.75;
+    color: #a99371;
+    max-width: 17rem;
+    margin: 0.3rem 0 1.6rem;
+  }
+  > button {
+    width: 100%;
+    min-height: 2.7rem;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+}
+.emblem {
+  position: relative;
+  img {
+    width: 8rem;
+    height: 8rem;
+    filter: drop-shadow(0 4px 12px #e6ae361f);
+  }
+  > span {
+    position: absolute;
+    bottom: 0.4rem;
+    right: -0.5rem;
+    font-size: 1.3rem;
+    background: #1d190f;
+    border: 1px solid #9e7a39;
+    border-radius: 50%;
+    padding: 0.45rem;
+    color: #d5aa59;
+  }
+}
+.selectedDeck {
+  width: 100%;
+  border-top: 1px solid #9e77353b;
+  padding-top: 1rem;
+  margin-top: auto;
+  text-align: left;
+  > label {
+    font: 500 0.85rem var(--display-font);
+    color: #d2b780;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+.deckPreview {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.8rem;
+  strong {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #e4cfaa;
+    display: block;
+  }
+  small {
+    font-size: 0.62rem;
+    color: #8f7d5f;
+    display: block;
+    margin-top: 0.4rem;
+  }
+}
+.editDeck {
+  margin-top: 0.6rem;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  color: #a98a53;
+  font-size: 0.62rem;
+  padding: 0.5rem 0;
+  &:hover {
+    color: #f0c579;
+  }
+}
+.servers {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem;
+  }
+  th {
+    text-align: left;
+    font-weight: 500;
+    color: #8f7a56;
+    font-size: 0.63rem;
+    padding: 0.75rem 0.6rem;
+    border-bottom: 1px solid #89672f44;
+  }
+  td {
+    padding: 1rem 0.6rem;
+    border-bottom: 1px solid #89672f28;
+    color: #c7b18b;
+  }
+  td:first-child {
+    color: #e0c69a;
+  }
+  th:last-child,
+  td:last-child {
+    text-align: right;
+  }
+  td button {
+    font-size: 0.65rem;
+    border-color: #8a652b;
+    color: #d4ac61;
+    background: linear-gradient(#392c16, #20190e);
+  }
+  > footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    font-size: 0.57rem;
+    color: #8c7755;
+  }
+}
+.tableHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  h2 {
+    font: 500 1.1rem var(--display-font);
+    color: #dbc190;
+  }
+  span {
+    font-size: 0.48rem;
+    letter-spacing: 0.09em;
+    color: #907448;
+  }
+}
+.serverIntro {
+  font-size: 0.7rem;
+  line-height: 1.7;
+  color: #95815f;
+  margin: 1rem 0;
+}
+.serverDot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border: 1px solid #b88e43;
+  transform: rotate(45deg);
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}
+.roomNotice {
+  display: flex;
+  gap: 1rem;
+  border: 1px solid #9771332e;
+  background: #b4872310;
+  padding: 1.3rem;
+  margin-top: 1.7rem;
+  > span {
+    font-size: 1.8rem;
+    color: #a48143;
+  }
+  strong {
+    font: 500 0.85rem var(--display-font);
+    color: #c4a56c;
+  }
+  p {
+    font-size: 0.68rem;
+    line-height: 1.75;
+    color: #96815f;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Match stays side-by-side in the phone's landscape orientation. */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  .page { inset: var(--header-height) 0.8rem 0.8rem; }
+  .tabs {
+    gap: 0.45rem;
+    margin-bottom: 0.55rem;
+    button {
+      min-width: 7.5rem;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.58rem;
+    }
+  }
+  .panels {
+    grid-template-columns: minmax(13rem, 0.8fr) minmax(0, 1.6fr);
+    gap: 0.65rem;
+  }
+  .challenge {
+    padding: 0.85rem;
+    h2 { font-size: 1.25rem; margin: 0.25rem 0; }
+    > p { font-size: 0.65rem; line-height: 1.4; margin: 0.15rem 0 0.7rem; }
+    > button { min-height: 2.25rem; font-size: 0.62rem; }
+  }
+  .emblem {
+    img { width: 5rem; height: 5rem; }
+    > span { bottom: 0.15rem; right: -0.35rem; font-size: 0.9rem; padding: 0.3rem; }
+  }
+  .selectedDeck {
+    padding-top: 0.55rem;
+    > label { font-size: 0.7rem; margin-bottom: 0.45rem; }
+  }
+  .deckPreview {
+    gap: 0.45rem;
+    margin-bottom: 0.45rem;
+    strong { font-size: 0.68rem; }
+    small { font-size: 0.52rem; margin-top: 0.2rem; }
+  }
+  .editDeck { margin-top: 0.25rem; padding: 0.25rem 0; font-size: 0.55rem; }
+  .servers {
+    padding: 0.85rem;
+    table { font-size: 0.65rem; }
+    th { padding: 0.4rem; font-size: 0.54rem; }
+    td { padding: 0.55rem 0.4rem; }
+    > footer { padding-top: 0.7rem; font-size: 0.5rem; }
+  }
+  .tableHeading {
+    gap: 0.5rem;
+    h2 { font-size: 0.9rem; }
+    span { font-size: 0.4rem; }
+  }
+  .serverIntro { font-size: 0.58rem; line-height: 1.4; margin: 0.5rem 0; }
+  .roomNotice {
+    gap: 0.55rem;
+    padding: 0.65rem;
+    margin-top: 0.75rem;
+    > span { font-size: 1.25rem; }
+    strong { font-size: 0.7rem; }
+    p { font-size: 0.55rem; line-height: 1.35; margin-top: 0.25rem; }
+  }
+}

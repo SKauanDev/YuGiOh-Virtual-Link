@@ -1,0 +1,208 @@
+.sidebar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-width);
+  z-index: 5;
+  background: linear-gradient(90deg, #0d0b08ed, #171209c9);
+  border-right: 1px solid #b6843552;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 8px 0 28px #0005;
+  padding: 1.1rem 0.65rem;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.25rem 0.35rem 0.8rem;
+  background: none;
+  border: 0;
+  color: #ebd09c;
+  text-align: left;
+  cursor: pointer;
+  strong {
+    font: 600 1rem var(--display-font);
+  }
+  small {
+    display: block;
+    font-size: 0.58rem;
+    color: #ad956b;
+    margin-top: 0.3rem;
+  }
+}
+.avatar {
+  width: 2.8rem;
+  height: 2.8rem;
+  flex-shrink: 0;
+  border: 1px solid #ad8c51;
+  border-radius: 50%;
+  background: radial-gradient(#384148, #111216);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 3px #b4914620;
+  img {
+    width: 2.1rem;
+    height: 2.1rem;
+  }
+}
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #9c793d;
+  font-size: 0.5rem;
+  margin: 0.45rem 0 1rem;
+  &::before,
+  &::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, #96744088, transparent);
+  }
+}
+.link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 2.85rem;
+  padding: 0.65rem 0.8rem;
+  color: #b7a078;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: left;
+  font: 500 0.82rem var(--theme-font);
+  transition: 0.2s;
+  > span:first-child {
+    font-size: 1.1rem;
+    color: #ab8b50;
+  }
+  &:hover {
+    color: #ffe0a2;
+    background: #a57c2320;
+  }
+  &:global(.active) {
+    background: linear-gradient(90deg, #90672565, #7a591619);
+    border-color: #dca84925;
+    color: #f2d399;
+    box-shadow: inset 3px 0 #d2a85a;
+    > span:first-child {
+      color: #e9bd65;
+    }
+  }
+  &:focus-visible {
+    outline: 2px solid #eac079;
+    outline-offset: -2px;
+  }
+}
+.sidebarBottom {
+  margin-top: auto;
+  text-align: center;
+  padding: 2rem 0.1rem 0.5rem;
+  opacity: 0.75;
+  img {
+    width: 3.4rem;
+    height: 3.4rem;
+    margin: 0 auto 0.8rem;
+    filter: sepia(0.6);
+  }
+  span {
+    font: 600 0.63rem var(--display-font);
+    letter-spacing: 0.19em;
+    display: block;
+  }
+  small {
+    font-size: 0.43rem;
+    letter-spacing: 0.24em;
+    color: #ab8b50;
+  }
+}
+.header {
+  position: absolute;
+  top: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  height: var(--header-height);
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2.1rem;
+  pointer-events: none;
+  > * {
+    pointer-events: auto;
+  }
+}
+.pageTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: #e4bd72;
+  text-shadow: 0 2px 8px #000;
+  > span {
+    font-size: 2.2rem;
+  }
+  h1 {
+    font: 500 2rem var(--display-font);
+    line-height: 1.1;
+  }
+  p {
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    margin-top: 0.45rem;
+    color: #c9ab77;
+  }
+}
+.status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.5rem;
+  background: #100d09a6;
+  border: 1px solid #a0783838;
+  border-radius: 3px;
+  color: #d5b775;
+  button {
+    color: #d1ae6d !important;
+  }
+  .session {
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+    border-right: 1px solid #85632d66;
+    padding: 0.2rem 0.85rem 0.2rem 0.4rem;
+    small {
+      display: block;
+      letter-spacing: 0;
+      font-size: 0.52rem;
+      color: #a79877;
+      padding-top: 0.25rem;
+    }
+    i {
+      display: inline-block;
+      background: #8bba74;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin-right: 0.4rem;
+    }
+  }
+}
+.main {
+  position: absolute;
+  inset: 0 0 0 var(--sidebar-width);
+  min-height: 0;
+}
+.full {
+  left: 0;
+}
+.duel {
+  color: #f6ecd7;
+}
+.profileHelp {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}

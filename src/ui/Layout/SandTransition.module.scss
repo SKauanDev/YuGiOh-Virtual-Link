@@ -1,0 +1,74 @@
+.sand {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 40;
+  animation: fadeOut 0.85s both;
+  contain: strict;
+  i {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: #edc16e;
+    border-radius: 50%;
+    box-shadow: 0 0 3px #dda84a88;
+    animation: grain 0.7s var(--delay) ease-out both;
+  }
+}
+.veil {
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(ellipse at 20% 70%, #bc8c432b, transparent 65%),
+    repeating-radial-gradient(
+      ellipse at 10% 50%,
+      transparent 0 18px,
+      #c18f4220 19px,
+      transparent 20px 30px
+    );
+  filter: blur(1px);
+  animation: sweep 0.7s ease-out both;
+}
+@keyframes grain {
+  from {
+    opacity: 0;
+    transform: translate(-35px, 18px);
+  }
+  20% {
+    opacity: 0.75;
+  }
+  to {
+    opacity: 0;
+    transform: translate(var(--drift), -26px);
+  }
+}
+@keyframes sweep {
+  from {
+    opacity: 0;
+    transform: translateX(-15%);
+  }
+  25% {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+}
+@keyframes fadeOut {
+  0%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sand {
+    display: none;
+  }
+}

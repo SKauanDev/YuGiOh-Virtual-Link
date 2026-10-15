@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<defs>
+<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#f6edda"/><stop offset=".7" stop-color="#e9d4ac"/><stop offset="1" stop-color="#c79f66"/></linearGradient>
+<linearGradient id="dune" x2=".3" y2="1"><stop stop-color="#d9bd8c"/><stop offset="1" stop-color="#bc925d"/></linearGradient>
+<radialGradient id="sun"><stop stop-color="#fff9e5"/><stop offset=".55" stop-color="#f9e4b7"/><stop offset="1" stop-color="#f9e4b7" stop-opacity="0"/></radialGradient>
+<pattern id="grain" width="180" height="130" patternUnits="userSpaceOnUse"><path d="M4 15h1m31 39h1m59-25h1m65 66h1M13 105h1m81 12h1m44-95h1m-82 57h1" stroke="#84633c" opacity=".13"/></pattern>
+<pattern id="frieze" width="80" height="90" patternUnits="userSpaceOnUse"><path d="M40 9v30m-12-17h24m-12-13c-15 0-15 13 0 13s15-13 0-13M18 65q22-18 44 0-22 18-44 0m22-7v14" fill="none" stroke="#997446" stroke-width="1" opacity=".16"/></pattern>
+</defs>
+<path fill="url(#sky)" d="M0 0h1920v1080H0z"/>
+<circle cx="1430" cy="350" r="310" fill="url(#sun)"/>
+<circle cx="1430" cy="350" r="94" fill="#f9e9c3" opacity=".65"/>
+<path d="M990 820 1330 400 1670 820Z" fill="#c9aa79" opacity=".36"/>
+<path d="m1330 400 340 420-276-72Z" fill="#ae8857" opacity=".23"/>
+<path d="M1420 890 1680 550 1940 890Z" fill="#c8a36e" opacity=".3"/>
+<path d="m1680 550 260 340-213-58Z" fill="#a17a4a" opacity=".2"/>
+<path d="M0 790Q340 715 770 861t1150-62v281H0Z" fill="#e3cba2" opacity=".75"/>
+<path d="M0 951q500-206 1090-33t830-22v184H0Z" fill="url(#dune)" opacity=".5"/>
+<path d="M0 1020q650-200 1270-43t650-62v165H0Z" fill="#c4a171" opacity=".33"/>
+<path d="M0 948q500-207 1090-33t830-22" fill="none" stroke="#fff0cf" opacity=".4"/>
+<path fill="url(#grain)" d="M0 0h1920v1080H0z"/>
+<path fill="url(#frieze)" d="M16 0h60v1080H16zM1844 0h60v1080h-60z"/>
+<path d="M91 0v1080M1829 0v1080" stroke="#aa895a" opacity=".11"/>
+</svg>
