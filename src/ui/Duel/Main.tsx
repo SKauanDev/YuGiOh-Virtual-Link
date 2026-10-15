@@ -24,6 +24,7 @@ import {
   YesNoModal,
 } from "./Message";
 import { ChatBox, HandChain, LifeBar, Mat, Menu, Underlying } from "./PlayMat";
+import { DuelDiskVisual } from "./DuelDiskVisual";
 
 export const loader: LoaderFunction = async () => {
   // 更新场景
@@ -68,6 +69,7 @@ export const Component: React.FC = () => {
 
   return (
     <>
+      <DuelDiskVisual />
       <Underlying />
       <SelectActionsModal />
       <Alert />
