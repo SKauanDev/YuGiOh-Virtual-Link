@@ -69,3 +69,19 @@
     animation: none;
   }
 }
+
+:global(.vl-duel-disk) .background {
+  background: radial-gradient(ellipse at 50% 48%, #174778 0%, #07162c 43%, #020711 85%);
+}
+:global(.vl-duel-disk) .inner {
+  background: radial-gradient(ellipse at 50% 50%, #29bfff19, transparent 65%),
+    repeating-linear-gradient(90deg, transparent 0 79px, #3c9be00d 80px 81px);
+  box-shadow: inset 0 0 8rem #000a;
+}
+:global(.vl-duel-disk) .inner::before {
+  animation: none;
+  background: linear-gradient(120deg, transparent 35%, #65ddff12 50%, transparent 65%);
+}
+:global(.vl-duel-disk) .inner::after {
+  background: radial-gradient(ellipse at 50% 50%, transparent 30%, #01050dcc 100%);
+}
