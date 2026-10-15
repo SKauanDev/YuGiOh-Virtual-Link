@@ -1,0 +1,90 @@
+/* A purely presentational skin: game zones retain their original DOM and handlers. */
+.vl-visual-toggle {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  padding: 8px 15px;
+  border: 1px solid #5bd6ff;
+  border-radius: 24px;
+  background: #07182bed;
+  color: #c4f5ff;
+  box-shadow: 0 0 18px #19bfff55, inset 0 0 12px #19bfff22;
+  font: 700 11px/1.4 system-ui, sans-serif;
+  letter-spacing: .16em;
+  cursor: pointer;
+}
+.vl-visual-toggle:hover, .vl-visual-toggle:focus-visible {
+  background: #123654;
+  outline: 2px solid #a5efff;
+  outline-offset: 2px;
+}
+.vl-duel-disk {
+  --vl-cyan: #4cdbff;
+  --vl-blue: #123f79;
+}
+.vl-duel-disk .duel-mat-plane {
+  position: relative;
+  isolation: isolate;
+  filter: drop-shadow(0 22px 25px #000b) drop-shadow(0 0 18px #15aaff40);
+}
+.vl-duel-disk .duel-mat-plane::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: -34px -66px;
+  border: 12px solid #a2bbd0;
+  border-left-width: 30px;
+  border-right-width: 30px;
+  border-radius: 22% 10% 24% 12% / 16% 28% 12% 22%;
+  background:
+    linear-gradient(90deg, transparent 49.6%, #68e6ff66 50%, transparent 50.4%),
+    repeating-linear-gradient(90deg, transparent 0 19%, #5cd9ff22 19.2% 19.5%, transparent 20%),
+    linear-gradient(155deg, #7f9db8 0%, #152c4a 12%, #071529 48%, #123b68 80%, #95b2ca 100%);
+  box-shadow: inset 0 0 0 4px #182f49, inset 0 0 0 7px #4bdcff66,
+    inset 0 0 45px #13aaff44, 0 0 0 4px #172e46, 0 0 35px #25aaff77;
+}
+.vl-duel-disk .duel-mat-plane::after {
+  content: "VIRTUAL LINK  //  HOLOGRAPHIC DUEL SYSTEM";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  bottom: -28px;
+  left: 0;
+  right: 0;
+  color: #a2f2ff;
+  text-align: center;
+  font: 700 10px/1.3 system-ui, sans-serif;
+  letter-spacing: .26em;
+  text-shadow: 0 0 10px #00c8ff;
+}
+.vl-duel-disk .duel-mat [data-testid="duel-zone"] {
+  border-color: #59cfff !important;
+  box-shadow: inset 0 0 12px #2baaff44, 0 0 7px #00bfff66 !important;
+  transition: box-shadow .2s ease, filter .2s ease;
+}
+.vl-duel-disk .duel-mat [data-testid="duel-zone"]:hover {
+  filter: brightness(1.35);
+  box-shadow: inset 0 0 18px #54dfff77, 0 0 16px #00cfffbb !important;
+}
+.vl-duel-disk body {
+  background: radial-gradient(ellipse at 50% 55%, #124475, #030713 72%) !important;
+}
+.vl-duel-disk .duel-mat-camera {
+  animation: vl-disk-arrive .85s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes vl-disk-arrive {
+  from { opacity: 0; transform: translateY(28px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vl-duel-disk .duel-mat-camera { animation: none; }
+  .vl-duel-disk .duel-mat [data-testid="duel-zone"] { transition: none; }
+}
+@media (max-width: 700px) {
+  .vl-visual-toggle { top: 5px; padding: 5px 8px; font-size: 9px; }
+  .vl-duel-disk .duel-mat-plane::before { inset: -16px -22px; border-width: 6px 12px; }
+  .vl-duel-disk .duel-mat-plane::after { font-size: 7px; letter-spacing: .08em; bottom: -18px; }
+}
