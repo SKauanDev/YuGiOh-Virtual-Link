@@ -88,3 +88,68 @@
   .vl-duel-disk .duel-mat-plane::before { inset: -16px -22px; border-width: 6px 12px; }
   .vl-duel-disk .duel-mat-plane::after { font-size: 7px; letter-spacing: .08em; bottom: -18px; }
 }
+
+/* Graphics controls are outside the board's transformed hit-testing surface. */
+.vl-visual-controls {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vl-visual-controls .vl-visual-toggle {
+  position: static;
+  transform: none;
+}
+.vl-graphics-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid #5bd6ff88;
+  border-radius: 18px;
+  color: #bcefff;
+  background: #07182bed;
+  font: 700 10px system-ui, sans-serif;
+}
+.vl-graphics-label select {
+  background: #07182b;
+  color: #d2faff;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.vl-duel-disk[data-duel-quality="high"] .duel-mat-plane::before {
+  animation: vl-disk-power 4s ease-in-out infinite alternate;
+}
+@keyframes vl-disk-power {
+  from { box-shadow: inset 0 0 0 4px #182f49, inset 0 0 0 7px #4bdcff55, inset 0 0 25px #13aaff33, 0 0 0 4px #172e46, 0 0 22px #25aaff55; }
+  to { box-shadow: inset 0 0 0 4px #182f49, inset 0 0 0 7px #4bdcffaa, inset 0 0 55px #13aaff66, 0 0 0 4px #172e46, 0 0 46px #25aaff99; }
+}
+/* Actual cards remain the game's original interactive elements. */
+.vl-duel-disk[data-duel-quality="high"] .duel-mat [data-testid="duel-card"][data-card-zone="MZONE"] {
+  filter: drop-shadow(0 0 9px #40dfff99);
+}
+.vl-duel-disk .duel-mat [data-testid="duel-card"][data-card-targeted="true"] {
+  filter: drop-shadow(0 0 16px #ff5a5a);
+}
+.vl-duel-disk[data-duel-quality="low"] .duel-mat-plane,
+.vl-duel-disk[data-duel-quality="low"] .duel-mat [data-testid="duel-card"] {
+  filter: none;
+}
+.vl-duel-disk[data-duel-quality="low"] .duel-mat-plane::before {
+  box-shadow: inset 0 0 0 4px #182f49, 0 0 0 4px #172e46;
+}
+.vl-duel-disk[data-duel-quality="medium"] .duel-mat-plane::before {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vl-duel-disk[data-duel-quality="high"] .duel-mat-plane::before { animation: none; }
+}
+@media (max-width: 700px) {
+  .vl-visual-controls { top: 5px; gap: 4px; }
+  .vl-graphics-label { padding: 5px; font-size: 9px; }
+}
