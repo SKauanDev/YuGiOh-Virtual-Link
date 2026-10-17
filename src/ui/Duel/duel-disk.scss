@@ -210,3 +210,42 @@
 @media (prefers-reduced-motion: reduce) {
   .vl-hologram { animation: none; opacity: .7; }
 }
+
+/* Reference-corrected device: five blue mechanical slots, central red hub and wrist strap.
+   The original field is retained for authoritative hit-testing and card positions. */
+.vl-disk-model { display:none; }
+.vl-duel-disk .duel-mat-camera { position:relative; overflow:visible; }
+.vl-duel-disk .vl-disk-model {
+  display:block; position:absolute; width:min(96vw,1200px); height:460px;
+  left:50%; top:50%; transform:translate(-50%,-48%) rotateX(13deg);
+  transform-style:preserve-3d; pointer-events:none; z-index:0;
+  filter:drop-shadow(0 28px 18px #000b);
+  animation:vl-wing-open 1s cubic-bezier(.2,.75,.2,1) both;
+}
+.vl-disk-wings { width:100%; overflow:visible; transform-origin:60% 60%; }
+.vl-disk-hub { position:absolute; width:235px; height:235px; left:57%; top:54%;
+  transform:translate(-50%,0) rotateX(25deg); transform-style:preserve-3d; }
+.vl-disk-ring { position:absolute; inset:0; border-radius:50%; border:28px solid #d4e1e9;
+  background:conic-gradient(#e9f0f5 0 15deg,#738da4 15deg 25deg,#e9f0f5 25deg 60deg,#8bacc9 60deg 90deg,#e9f0f5 90deg 160deg,#3389bd 160deg 220deg,#e9f0f5 220deg);
+  box-shadow:inset 0 0 0 12px #4d708b,0 12px 0 #496075,0 22px 20px #0009; }
+.vl-disk-red { position:absolute; width:120px; height:135px; left:50%; top:-30px;
+  transform:translateX(-50%) translateZ(30px); background:linear-gradient(125deg,#ff6667,#bf192a 70%);
+  clip-path:polygon(0 0,24% 13%,50% 5%,76% 13%,100% 0,92% 80%,72% 100%,28% 100%,8% 80%);
+  box-shadow:inset 0 0 20px #7a101a; }
+.vl-disk-gem { position:absolute; left:43px; top:25px; width:34px; height:70px;
+  background:linear-gradient(130deg,#a7e7ff,#0b233c 70%); border:4px solid #f4f5f6;
+  clip-path:polygon(50% 0,100% 100%,0 100%); }
+.vl-disk-strap { position:absolute; left:78%; top:95px; width:205px; height:83px;
+  background:linear-gradient(#f0f3f5,#8193a4); border:7px solid #dbe4ec;
+  box-shadow:0 9px 0 #41566b; border-radius:7px; display:flex; align-items:center; justify-content:center;
+  font:700 12px system-ui; letter-spacing:.15em; color:#263c55; }
+.vl-disk-strap i { position:absolute; right:10px; width:36px; height:30px; background:#ed4655;
+  clip-path:polygon(0 0,100% 50%,0 100%); }
+.vl-duel-disk .duel-mat-plane { z-index:1; }
+.vl-duel-disk .duel-mat-plane::before,.vl-duel-disk .duel-mat-plane::after { display:none!important; }
+.vl-duel-disk .vl-effect-layer { display:none!important; }
+.vl-duel-disk .duel-mat [data-testid="duel-zone"] { background:transparent!important; }
+@keyframes vl-wing-open { from {opacity:0;transform:translate(-50%,-48%) rotateX(70deg) scaleX(.12)}
+to {opacity:1;transform:translate(-50%,-48%) rotateX(13deg) scaleX(1)} }
+@media(max-width:900px) { .vl-duel-disk .vl-disk-model { transform:translate(-50%,-48%) scale(.72); } }
+@media(prefers-reduced-motion:reduce) { .vl-duel-disk .vl-disk-model { animation:none; } }
