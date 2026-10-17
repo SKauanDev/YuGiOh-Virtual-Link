@@ -1,11 +1,15 @@
-# Duel Disk visual mode
+# Duel Disk 3D asset integration
 
-This is a self-contained procedural CSS 3D visual implementation. It requires no paid APIs, third-party 3D model licenses, new dependencies, or changes to the game protocol.
+The visual mode now embeds a real artist-made Yu-Gi-Oh Duel Disk via the official Sketchfab viewer, instead of a procedural SVG/CSS replica.
 
-The original Bg and Card components remain the only interactive field. Never duplicate their click handlers in the decorative scene. DuelDiskEffects reads the existing Valtio card store and only renders a presentation pulse on zone transitions. A zone departure is intentionally labelled *CARD DEPARTED*, not *destroyed*, because movement alone does not prove a destruction event.
+- Model: https://sketchfab.com/3d-models/yu-gi-oh-duel-disk-88dc1d9075504d04a8ce506030189304
+- Creator: ELATTAR Ayoub
+- Listing license: Creative Commons Attribution (CC BY); retain visible creator/source credit.
+- Viewer: https://sketchfab.com/developers/viewer
+- Original game zone DOM, card interactions, multiplayer and rules are untouched.
 
-Controls: Duel Disk / Classic; FX High / Medium / Low. Preferences persist in localStorage when available. Reduced-motion users receive static effects.
+IMPORTANT: This is a hosted iframe visualization, not a locally loaded GLB and not yet an interactive, rigged game mesh. The Sketchfab iframe is deliberately non-interactive to avoid stealing game clicks. The original rectangular game-zone layout remains overlaid and will need a dedicated zone-coordinate adapter and an appropriately rigged local model before a complete physical Duel Disk board is achieved. It requires network access to Sketchfab and may be blocked by privacy settings or CSP. Model iframe onError does not catch all blocked-embed failures.
 
-This version does **not** contain GLB meshes or true Three.js monsters. The metallic housing and hologram overlays are procedural CSS 3D. A future WebGL renderer can be mounted behind the existing interactive board without changing the duel engine.
+Sketchfab's Download API requires account OAuth; do not hardcode a token or hotlink temporary archive URLs. To implement a locally hosted GLB, obtain the model through an authorized account, retain its license and attribution, optimize it, and load with Three.js/GLTFLoader. Do not claim this embed is a fully integrated Three.js model.
 
-Validation before merge: npm ci; npm run build; npm run lint; npm run test:e2e. Test card placement, card selection, multiplayer and replay in both modes. GitHub-only editing cannot execute these tests.
+Validation required before merge: npm install; npm run build; npm run lint; npm run test:e2e; check embed availability, CSP, all card clicks, zones, multiplayer and classic mode. These checks have not been run by the GitHub-only editing environment.
