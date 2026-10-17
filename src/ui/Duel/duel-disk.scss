@@ -153,3 +153,60 @@
   .vl-visual-controls { top: 5px; gap: 4px; }
   .vl-graphics-label { padding: 5px; font-size: 9px; }
 }
+
+/* Non-interactive holographic projection in front of the arena. */
+.vl-effect-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  perspective: 900px;
+}
+.vl-duel-disk .vl-effect-layer { display: flex; }
+.vl-hologram {
+  position: relative;
+  width: min(24vw, 220px);
+  height: min(28vw, 260px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #b8f7ff;
+  text-shadow: 0 0 16px #00cfff;
+  animation: vl-project 1.4s ease-out both;
+}
+.vl-hologram-ring {
+  position: absolute;
+  bottom: 10%;
+  width: 90%;
+  aspect-ratio: 1;
+  border: 3px solid #54e7ff;
+  border-radius: 50%;
+  transform: rotateX(72deg);
+  box-shadow: 0 0 24px #18dfff, inset 0 0 18px #18dfff;
+}
+.vl-hologram-symbol {
+  font: 100 130px/1 system-ui, sans-serif;
+  color: #d4faff;
+  filter: drop-shadow(0 0 22px #12cfff);
+}
+.vl-hologram-caption {
+  font: 800 11px/1.4 system-ui, sans-serif;
+  letter-spacing: .22em;
+  text-align: center;
+}
+.vl-hologram--destroy { color: #ffb7a6; filter: hue-rotate(130deg); }
+@keyframes vl-project {
+  0% { opacity: 0; transform: translateY(75px) rotateY(-30deg) scale(.3); }
+  25% { opacity: .95; transform: translateY(0) rotateY(0) scale(1); }
+  75% { opacity: .9; transform: translateY(-14px) scale(1.04); }
+  100% { opacity: 0; transform: translateY(-38px) scale(.85); }
+}
+.vl-duel-disk[data-duel-quality="low"] .vl-effect-layer { display: none; }
+.vl-duel-disk[data-duel-quality="medium"] .vl-hologram { filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  .vl-hologram { animation: none; opacity: .7; }
+}
