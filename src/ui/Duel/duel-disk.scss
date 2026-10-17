@@ -249,3 +249,34 @@
 to {opacity:1;transform:translate(-50%,-48%) rotateX(13deg) scaleX(1)} }
 @media(max-width:900px) { .vl-duel-disk .vl-disk-model { transform:translate(-50%,-48%) scale(.72); } }
 @media(prefers-reduced-motion:reduce) { .vl-duel-disk .vl-disk-model { animation:none; } }
+
+/* Real artist-made 3D viewer replaces the procedural SVG housing. */
+.vl-duel-disk .vl-disk-sketchfab {
+  width: min(100vw, 1280px);
+  height: min(70vh, 680px);
+  top: 45%;
+  overflow: hidden;
+  border: 0;
+  border-radius: 24px;
+  background: radial-gradient(ellipse, #16253b, #02040a 75%);
+  animation: vl-model-arrive 900ms ease-out both;
+  filter: drop-shadow(0 25px 22px #000b);
+}
+.vl-disk-sketchfab iframe {
+  width: 100%; height: 100%; display: block; border: 0;
+  pointer-events: none; /* do not steal gameplay card clicks */
+}
+.vl-model-credit {
+  position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%);
+  color: #d7e9fa; background: #081423d9; padding: 4px 9px;
+  border-radius: 6px; font: 10px/1.3 system-ui,sans-serif; white-space: nowrap;
+  pointer-events: auto; text-decoration: underline;
+}
+.vl-model-unavailable { color: #fff; padding: 2rem; text-align: center; }
+@keyframes vl-model-arrive {
+  from { opacity:0; transform:translate(-50%,-48%) scale(.9); }
+  to { opacity:1; transform:translate(-50%,-48%) scale(1); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .vl-duel-disk .vl-disk-sketchfab { animation:none; }
+}
