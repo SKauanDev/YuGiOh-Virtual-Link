@@ -1,0 +1,282 @@
+/* A purely presentational skin: game zones retain their original DOM and handlers. */
+.vl-visual-toggle {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  padding: 8px 15px;
+  border: 1px solid #5bd6ff;
+  border-radius: 24px;
+  background: #07182bed;
+  color: #c4f5ff;
+  box-shadow: 0 0 18px #19bfff55, inset 0 0 12px #19bfff22;
+  font: 700 11px/1.4 system-ui, sans-serif;
+  letter-spacing: .16em;
+  cursor: pointer;
+}
+.vl-visual-toggle:hover, .vl-visual-toggle:focus-visible {
+  background: #123654;
+  outline: 2px solid #a5efff;
+  outline-offset: 2px;
+}
+.vl-duel-disk {
+  --vl-cyan: #4cdbff;
+  --vl-blue: #123f79;
+}
+.vl-duel-disk .duel-mat-plane {
+  position: relative;
+  isolation: isolate;
+  filter: drop-shadow(0 22px 25px #000b) drop-shadow(0 0 18px #15aaff40);
+}
+.vl-duel-disk .duel-mat-plane::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  inset: -34px -66px;
+  border: 12px solid #a2bbd0;
+  border-left-width: 30px;
+  border-right-width: 30px;
+  border-radius: 22% 10% 24% 12% / 16% 28% 12% 22%;
+  background:
+    linear-gradient(90deg, transparent 49.6%, #68e6ff66 50%, transparent 50.4%),
+    repeating-linear-gradient(90deg, transparent 0 19%, #5cd9ff22 19.2% 19.5%, transparent 20%),
+    linear-gradient(155deg, #7f9db8 0%, #152c4a 12%, #071529 48%, #123b68 80%, #95b2ca 100%);
+  box-shadow: inset 0 0 0 4px #182f49, inset 0 0 0 7px #4bdcff66,
+    inset 0 0 45px #13aaff44, 0 0 0 4px #172e46, 0 0 35px #25aaff77;
+}
+.vl-duel-disk .duel-mat-plane::after {
+  content: "VIRTUAL LINK  //  HOLOGRAPHIC DUEL SYSTEM";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  bottom: -28px;
+  left: 0;
+  right: 0;
+  color: #a2f2ff;
+  text-align: center;
+  font: 700 10px/1.3 system-ui, sans-serif;
+  letter-spacing: .26em;
+  text-shadow: 0 0 10px #00c8ff;
+}
+.vl-duel-disk .duel-mat [data-testid="duel-zone"] {
+  border-color: #59cfff !important;
+  box-shadow: inset 0 0 12px #2baaff44, 0 0 7px #00bfff66 !important;
+  transition: box-shadow .2s ease, filter .2s ease;
+}
+.vl-duel-disk .duel-mat [data-testid="duel-zone"]:hover {
+  filter: brightness(1.35);
+  box-shadow: inset 0 0 18px #54dfff77, 0 0 16px #00cfffbb !important;
+}
+.vl-duel-disk body {
+  background: radial-gradient(ellipse at 50% 55%, #124475, #030713 72%) !important;
+}
+.vl-duel-disk .duel-mat-camera {
+  animation: vl-disk-arrive .85s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes vl-disk-arrive {
+  from { opacity: 0; transform: translateY(28px) scale(.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vl-duel-disk .duel-mat-camera { animation: none; }
+  .vl-duel-disk .duel-mat [data-testid="duel-zone"] { transition: none; }
+}
+@media (max-width: 700px) {
+  .vl-visual-toggle { top: 5px; padding: 5px 8px; font-size: 9px; }
+  .vl-duel-disk .duel-mat-plane::before { inset: -16px -22px; border-width: 6px 12px; }
+  .vl-duel-disk .duel-mat-plane::after { font-size: 7px; letter-spacing: .08em; bottom: -18px; }
+}
+
+/* Graphics controls are outside the board's transformed hit-testing surface. */
+.vl-visual-controls {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vl-visual-controls .vl-visual-toggle {
+  position: static;
+  transform: none;
+}
+.vl-graphics-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid #5bd6ff88;
+  border-radius: 18px;
+  color: #bcefff;
+  background: #07182bed;
+  font: 700 10px system-ui, sans-serif;
+}
+.vl-graphics-label select {
+  background: #07182b;
+  color: #d2faff;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+.vl-duel-disk[data-duel-quality="high"] .duel-mat-plane::before {
+  animation: vl-disk-power 4s ease-in-out infinite alternate;
+}
+@keyframes vl-disk-power {
+  from { box-shadow: inset 0 0 0 4px #182f49, inset 0 0 0 7px #4bdcff55, inset 0 0 25px #13aaff33, 0 0 0 4px #172e46, 0 0 22px #25aaff55; }
+  to { box-shadow: inset 0 0 0 4px #182f49, inset 0 0 0 7px #4bdcffaa, inset 0 0 55px #13aaff66, 0 0 0 4px #172e46, 0 0 46px #25aaff99; }
+}
+/* Actual cards remain the game's original interactive elements. */
+.vl-duel-disk[data-duel-quality="high"] .duel-mat [data-testid="duel-card"][data-card-zone="MZONE"] {
+  filter: drop-shadow(0 0 9px #40dfff99);
+}
+.vl-duel-disk .duel-mat [data-testid="duel-card"][data-card-targeted="true"] {
+  filter: drop-shadow(0 0 16px #ff5a5a);
+}
+.vl-duel-disk[data-duel-quality="low"] .duel-mat-plane,
+.vl-duel-disk[data-duel-quality="low"] .duel-mat [data-testid="duel-card"] {
+  filter: none;
+}
+.vl-duel-disk[data-duel-quality="low"] .duel-mat-plane::before {
+  box-shadow: inset 0 0 0 4px #182f49, 0 0 0 4px #172e46;
+}
+.vl-duel-disk[data-duel-quality="medium"] .duel-mat-plane::before {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vl-duel-disk[data-duel-quality="high"] .duel-mat-plane::before { animation: none; }
+}
+@media (max-width: 700px) {
+  .vl-visual-controls { top: 5px; gap: 4px; }
+  .vl-graphics-label { padding: 5px; font-size: 9px; }
+}
+
+/* Non-interactive holographic projection in front of the arena. */
+.vl-effect-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  perspective: 900px;
+}
+.vl-duel-disk .vl-effect-layer { display: flex; }
+.vl-hologram {
+  position: relative;
+  width: min(24vw, 220px);
+  height: min(28vw, 260px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #b8f7ff;
+  text-shadow: 0 0 16px #00cfff;
+  animation: vl-project 1.4s ease-out both;
+}
+.vl-hologram-ring {
+  position: absolute;
+  bottom: 10%;
+  width: 90%;
+  aspect-ratio: 1;
+  border: 3px solid #54e7ff;
+  border-radius: 50%;
+  transform: rotateX(72deg);
+  box-shadow: 0 0 24px #18dfff, inset 0 0 18px #18dfff;
+}
+.vl-hologram-symbol {
+  font: 100 130px/1 system-ui, sans-serif;
+  color: #d4faff;
+  filter: drop-shadow(0 0 22px #12cfff);
+}
+.vl-hologram-caption {
+  font: 800 11px/1.4 system-ui, sans-serif;
+  letter-spacing: .22em;
+  text-align: center;
+}
+.vl-hologram--destroy { color: #ffb7a6; filter: hue-rotate(130deg); }
+@keyframes vl-project {
+  0% { opacity: 0; transform: translateY(75px) rotateY(-30deg) scale(.3); }
+  25% { opacity: .95; transform: translateY(0) rotateY(0) scale(1); }
+  75% { opacity: .9; transform: translateY(-14px) scale(1.04); }
+  100% { opacity: 0; transform: translateY(-38px) scale(.85); }
+}
+.vl-duel-disk[data-duel-quality="low"] .vl-effect-layer { display: none; }
+.vl-duel-disk[data-duel-quality="medium"] .vl-hologram { filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  .vl-hologram { animation: none; opacity: .7; }
+}
+
+/* Reference-corrected device: five blue mechanical slots, central red hub and wrist strap.
+   The original field is retained for authoritative hit-testing and card positions. */
+.vl-disk-model { display:none; }
+.vl-duel-disk .duel-mat-camera { position:relative; overflow:visible; }
+.vl-duel-disk .vl-disk-model {
+  display:block; position:absolute; width:min(96vw,1200px); height:460px;
+  left:50%; top:50%; transform:translate(-50%,-48%) rotateX(13deg);
+  transform-style:preserve-3d; pointer-events:none; z-index:0;
+  filter:drop-shadow(0 28px 18px #000b);
+  animation:vl-wing-open 1s cubic-bezier(.2,.75,.2,1) both;
+}
+.vl-disk-wings { width:100%; overflow:visible; transform-origin:60% 60%; }
+.vl-disk-hub { position:absolute; width:235px; height:235px; left:57%; top:54%;
+  transform:translate(-50%,0) rotateX(25deg); transform-style:preserve-3d; }
+.vl-disk-ring { position:absolute; inset:0; border-radius:50%; border:28px solid #d4e1e9;
+  background:conic-gradient(#e9f0f5 0 15deg,#738da4 15deg 25deg,#e9f0f5 25deg 60deg,#8bacc9 60deg 90deg,#e9f0f5 90deg 160deg,#3389bd 160deg 220deg,#e9f0f5 220deg);
+  box-shadow:inset 0 0 0 12px #4d708b,0 12px 0 #496075,0 22px 20px #0009; }
+.vl-disk-red { position:absolute; width:120px; height:135px; left:50%; top:-30px;
+  transform:translateX(-50%) translateZ(30px); background:linear-gradient(125deg,#ff6667,#bf192a 70%);
+  clip-path:polygon(0 0,24% 13%,50% 5%,76% 13%,100% 0,92% 80%,72% 100%,28% 100%,8% 80%);
+  box-shadow:inset 0 0 20px #7a101a; }
+.vl-disk-gem { position:absolute; left:43px; top:25px; width:34px; height:70px;
+  background:linear-gradient(130deg,#a7e7ff,#0b233c 70%); border:4px solid #f4f5f6;
+  clip-path:polygon(50% 0,100% 100%,0 100%); }
+.vl-disk-strap { position:absolute; left:78%; top:95px; width:205px; height:83px;
+  background:linear-gradient(#f0f3f5,#8193a4); border:7px solid #dbe4ec;
+  box-shadow:0 9px 0 #41566b; border-radius:7px; display:flex; align-items:center; justify-content:center;
+  font:700 12px system-ui; letter-spacing:.15em; color:#263c55; }
+.vl-disk-strap i { position:absolute; right:10px; width:36px; height:30px; background:#ed4655;
+  clip-path:polygon(0 0,100% 50%,0 100%); }
+.vl-duel-disk .duel-mat-plane { z-index:1; }
+.vl-duel-disk .duel-mat-plane::before,.vl-duel-disk .duel-mat-plane::after { display:none!important; }
+.vl-duel-disk .vl-effect-layer { display:none!important; }
+.vl-duel-disk .duel-mat [data-testid="duel-zone"] { background:transparent!important; }
+@keyframes vl-wing-open { from {opacity:0;transform:translate(-50%,-48%) rotateX(70deg) scaleX(.12)}
+to {opacity:1;transform:translate(-50%,-48%) rotateX(13deg) scaleX(1)} }
+@media(max-width:900px) { .vl-duel-disk .vl-disk-model { transform:translate(-50%,-48%) scale(.72); } }
+@media(prefers-reduced-motion:reduce) { .vl-duel-disk .vl-disk-model { animation:none; } }
+
+/* Real artist-made 3D viewer replaces the procedural SVG housing. */
+.vl-duel-disk .vl-disk-sketchfab {
+  width: min(100vw, 1280px);
+  height: min(70vh, 680px);
+  top: 45%;
+  overflow: hidden;
+  border: 0;
+  border-radius: 24px;
+  background: radial-gradient(ellipse, #16253b, #02040a 75%);
+  animation: vl-model-arrive 900ms ease-out both;
+  filter: drop-shadow(0 25px 22px #000b);
+}
+.vl-disk-sketchfab iframe {
+  width: 100%; height: 100%; display: block; border: 0;
+  pointer-events: none; /* do not steal gameplay card clicks */
+}
+.vl-model-credit {
+  position: absolute; bottom: 7px; left: 50%; transform: translateX(-50%);
+  color: #d7e9fa; background: #081423d9; padding: 4px 9px;
+  border-radius: 6px; font: 10px/1.3 system-ui,sans-serif; white-space: nowrap;
+  pointer-events: auto; text-decoration: underline;
+}
+.vl-model-unavailable { color: #fff; padding: 2rem; text-align: center; }
+@keyframes vl-model-arrive {
+  from { opacity:0; transform:translate(-50%,-48%) scale(.9); }
+  to { opacity:1; transform:translate(-50%,-48%) scale(1); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .vl-duel-disk .vl-disk-sketchfab { animation:none; }
+}

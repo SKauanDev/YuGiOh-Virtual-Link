@@ -5,12 +5,14 @@ import { cardStore } from "@/stores";
 import { Bg } from "../Bg";
 import { Card } from "../Card";
 import styles from "./index.module.scss";
+import { DuelDiskModel } from "../../DuelDiskModel";
 
 // 后面再改名
 export const Mat: React.FC = () => {
   return (
     <section className={`${styles.mat} duel-mat`}>
       <div className={`${styles.camera} duel-mat-camera`}>
+        <DuelDiskModel />
         <div className={`${styles.plane} duel-mat-plane`}>
           <Bg />
           <div className={`${styles.container} duel-mat-card-container`}>
