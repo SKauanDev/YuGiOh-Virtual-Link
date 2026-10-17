@@ -25,6 +25,7 @@ import {
 } from "./Message";
 import { ChatBox, HandChain, LifeBar, Mat, Menu, Underlying } from "./PlayMat";
 import { DuelDiskVisual } from "./DuelDiskVisual";
+import { DuelDiskEffects } from "./DuelDiskEffects";
 
 export const loader: LoaderFunction = async () => {
   // 更新场景
@@ -76,6 +77,7 @@ export const Component: React.FC = () => {
       <Menu />
       <LifeBar />
       <Mat />
+      <DuelDiskEffects />
       <CardModal />
       <CardListModal />
       <HintNotification />
